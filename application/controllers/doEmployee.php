@@ -23,6 +23,10 @@ class doEmployee extends CI_Controller {
 		$this->load->view('adminDoShow',$data);
 		//$this->load->view('adminDoShow');
 	}
+	function doAddEmp()
+	{
+		$this->load->view('adminDoEmployee');
+	}
 	function doAdd()
 	{
 		//$code = $this->employee->returnorderSupplies();
@@ -35,6 +39,7 @@ class doEmployee extends CI_Controller {
 		$this->Employee->setEmpIdCard($this->input->post('empIdCard'));
 		$this->Employee->setEmpAddress($this->input->post('empAddress'));
 		$this->Employee->setEmpBirthDay($this->input->post('empBirthDay'));
+		$this->Employee->setEmpStatus($this->input->post('empTel'));
 		$this->Employee->setEmpStatus($this->input->post('empStatus'));
 							
 		$this->Employee->addEmployee();
@@ -60,21 +65,26 @@ class doEmployee extends CI_Controller {
 		}
 	function doUpdate()
 	{
-		$this->Employee->setEmpId($this->input->post('empId'));
 		$this->Employee->setEmpName($this->input->post('empName'));
 		$this->Employee->setEmpLastname($this->input->post('empLastname'));
 		$this->Employee->setEmpIdCard($this->input->post('empIdCard'));
 		$this->Employee->setEmpAddress($this->input->post('empAddress'));
 		$this->Employee->setEmpBirthDay($this->input->post('empBirthDay'));
-		$this->Employee->setEmpStatus($this->input->post('empStatus'));	
+		$this->Employee->setEmpStatus($this->input->post('empStatus'));
+		$this->Employee->setEmpTel($this->input->post('empTel'));
+							
 		$this->Employee->upDateEmployee();
 		$this->index();
 	}
 	function doDelete($empId)
 	{    
 		$this->Employee->delete($empId);
-		echo 'ส้ำเร็จ';
 		$this->index();
+	}
+	function searchData(){
+		$keyword = $this->input->post('keyword');
+        $data['showAll'] = $this->Employee->searchData($keyword);
+        $this->load->view('adminDoShow',$data);
 	}
 
 }

@@ -69,7 +69,7 @@ $( document ).ready(function() {
    
 	    </script>		
   <div class="sss">
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<table width="" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="30%" height="35" align="left">Username</td>
     <td width="70%"><input class="checkInput" type="text" name="empUserName" id="empUserName" /> <input class="checkInput" type="text" name="usernamess" id="usernamess" /> <div class="result"></div></td>
@@ -98,8 +98,12 @@ $( document ).ready(function() {
     <td><textarea class="checkInput" name="empAddress" id="empAddress" cols="45" rows="5"></textarea></td>
   </tr>
   <tr>
-    <td height="40">วันเกิด</td>
+    <td height="">วันเกิด</td>
     <td><input class="checkInput" type="date" name="empBirthDay" id="empBirthDay" /></td>
+  </tr>
+  <tr>
+    <td height="">เบอร์โทรศัพ</td>
+    <td><input class="checkInput" type="date" name="empTel" id="empTel" value="<?php echo $row['empTel']?>" /></td>
   </tr>
   <tr>
     <td height="40">สถานะ</td>

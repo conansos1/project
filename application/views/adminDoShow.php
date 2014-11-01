@@ -5,19 +5,34 @@
 <title>Untitled Document</title>
 </head>
 
-<body><table width="" border="1" cellpadding="0" cellspacing="0" id="8">
+<body>
+<form id="form1" name="form1" method="post" action="<?php echo base_url()?>index.php/doEmployee/searchData">
+<table width="" border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+      <input type="text" name="keyword" id="keyword" />
+    </td>
+    <td><input name="submit" type="submit" value="ค้นหา"/></td></form>
+    <form id="form1" name="form1" method="post" action="<?php echo base_url()?>index.php/doEmployee/doAddEmp">
+    	<td><input name="submit" type="submit" value="เพิ่มพนักงาน"/></td>
+	</form>
+  </tr>
+</table>
+
+
+<table width="" border="1" cellpadding="0" cellspacing="0" id="8">
 
   <tr>
-    <td width="12">id</td>
-    <td width="23">ชื่อ</td>
-    <td width="65">นามสกุล</td>
-    <td width="131">รหัสบัตรประชาชน</td>
-    <td width="50">ที่อยู่</td>
-    <td width="51">วันเกิด</td>
-    <td width="71">หมายเลขโทรศัพย์</td>
-    <td width="71">สถานะ</td>
-    <td width="71">แก้ไข</td>
-    <td width="71">ลบ</td>
+    <td width="">id</td>
+    <td width="">ชื่อ</td>
+    <td width="">นามสกุล</td>
+    <td width="">รหัสบัตรประชาชน</td>
+    <td width="">ที่อยู่</td>
+    <td width="">วันเกิด</td>
+    <td width="">หมายเลขโทรศัพย์</td>
+    <td width="">สถานะ</td>
+    <td width="">แก้ไข</td>
+    <td width="">ลบ</td>
   </tr>
   <?php foreach($showAll as $row){?>
   <tr>

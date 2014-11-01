@@ -155,6 +155,19 @@ class Employee extends CI_Model {
     function getEmpDataStatus(){
         return $this->empDataStatus; 
      }
+###### End GET : $empDataStatus ######
+
+ ###### SET : $empDataStatus ######
+    function setEmpTel($empTel){
+        $this->empTel = $empTel; 
+     }
+###### End SET : $empDataStatus ###### 
+
+
+###### GET : $empDataStatus ######
+    function getEmpTel(){
+        return $this->empTel; 
+     }
 ###### End GET : $empDataStatus ###### 
 
 
@@ -221,15 +234,14 @@ function addEmployee()
 	function upDateEmployee()
 	{
 		$data = array(
-					   'empId' => $this->getEmpId(),
 					   'empName' => $this->getEmpName(),
 					   'empLastname' => $this->getEmpLastname(),
 					   'empIdCard' => $this->getEmpIdCard(),
 					   'empAddress' => $this->getEmpAddress(),
 					   'empBirthDay' => $this->getEmpBirthDay(),
+					   'empTel' => $this->getEmpTel(),
 					   'empStatus' => $this->getEmpStatus()
 					);
-			$this->db->where('tblEmployee.empId',$this->getEmpId());
 			$this->db->update('tblEmployee',$data);
 	}
 	function delete($empId)
@@ -244,6 +256,15 @@ function addEmployee()
 		{
 		echo "";
 		}
+	}
+	function searchData($keyword)
+	{
+		$this->db->like('tblEmployee.empName',$keyword);
+		$this->db->or_like('tblEmployee.empLastname',$keyword);
+		$this->db->or_like('tblEmployee.empIdCard',$keyword);
+		$query  =  $this->db->get('tblEmployee')->result_array();
+		return $query;
+			
 	}
 
 }?>
