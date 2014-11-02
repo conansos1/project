@@ -234,6 +234,7 @@ function addEmployee()
 	function upDateEmployee()
 	{
 		$data = array(
+						'empId' => $this->getEmpId(),
 					   'empName' => $this->getEmpName(),
 					   'empLastname' => $this->getEmpLastname(),
 					   'empIdCard' => $this->getEmpIdCard(),
@@ -242,6 +243,7 @@ function addEmployee()
 					   'empTel' => $this->getEmpTel(),
 					   'empStatus' => $this->getEmpStatus()
 					);
+			$this->db->where('tblEmployee.empId',$this->getEmpId());
 			$this->db->update('tblEmployee',$data);
 	}
 	function delete($empId)

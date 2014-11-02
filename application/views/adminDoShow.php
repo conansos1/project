@@ -6,8 +6,9 @@
 </head>
 
 <body>
+<br/><br/><br/><br/>
 <form id="form1" name="form1" method="post" action="<?php echo base_url()?>index.php/doEmployee/searchData">
-<table width="" border="1" cellspacing="0" cellpadding="0">
+<table width="" border="1" cellspacing="0" cellpadding="0" align="center">
   <tr>
     <td>
       <input type="text" name="keyword" id="keyword" />
@@ -44,13 +45,13 @@
     <td><?php echo $row['empBirthDay'];?></td>
     <td><?php echo $row['empTel'];?></td>
     <td><?php echo $row['empStatus'];?></td>
-    <td><a name="update" href="<?php echo base_url()?>index.php/doEmployee/upDate/<?php echo $row['empId'];?>">แก้ไข</a></td>
-    <td><a name="update" href="<?php echo base_url()?>index.php/doEmployee/doDelete/<?php echo $row['empId'];?>">ลบ</a></td>
+    <td><a class="popupLoad" name="update" href="<?php echo base_url();?>index.php/doEmployee/upDate/<?php echo $row['empId'];?>" class="submenu" title="home">แก้ไข</a> </td>
+    <td><a class="popupLoad" name="update" href="<?php echo base_url()?>index.php/doEmployee/doDelete/<?php echo $row['empId'];?>">ลบ</a></td>
   </tr>
   <?php } ?>
 </table>
 
-
-
+<br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 </body>
 </html>

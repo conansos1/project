@@ -19,8 +19,7 @@ class doEmployee extends CI_Controller {
 	}
 	function index()
 	{	
-		$data['showAll'] = $this->Employee->showAllData();
-		$this->load->view('adminDoShow',$data);
+		$this->load->view('main');
 		//$this->load->view('adminDoShow');
 	}
 	function doAddEmp()
@@ -41,9 +40,8 @@ class doEmployee extends CI_Controller {
 		$this->Employee->setEmpBirthDay($this->input->post('empBirthDay'));
 		$this->Employee->setEmpStatus($this->input->post('empTel'));
 		$this->Employee->setEmpStatus($this->input->post('empStatus'));
-							
 		$this->Employee->addEmployee();
-		$this->index();
+		echo "<script>parent.jQuery.fancybox.close();</script>";
 	}
 	 function checkUser(){
 	$empUserName = $this->input->post('empUserName');
@@ -65,6 +63,7 @@ class doEmployee extends CI_Controller {
 		}
 	function doUpdate()
 	{
+		$this->Employee->setEmpId($this->input->post('empId'));
 		$this->Employee->setEmpName($this->input->post('empName'));
 		$this->Employee->setEmpLastname($this->input->post('empLastname'));
 		$this->Employee->setEmpIdCard($this->input->post('empIdCard'));
@@ -74,19 +73,18 @@ class doEmployee extends CI_Controller {
 		$this->Employee->setEmpTel($this->input->post('empTel'));
 							
 		$this->Employee->upDateEmployee();
-		$this->index();
+		echo "<script>parent.jQuery.fancybox.close();</script>";
 	}
 	function doDelete($empId)
 	{    
 		$this->Employee->delete($empId);
-		$this->index();
+		echo "<script>parent.jQuery.fancybox.close();</script>";
 	}
 	function searchData(){
 		$keyword = $this->input->post('keyword');
         $data['showAll'] = $this->Employee->searchData($keyword);
         $this->load->view('adminDoShow',$data);
 	}
-
 }
 
 ?>

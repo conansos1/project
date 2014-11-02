@@ -1,5 +1,5 @@
 
-<script type="text/javascript" src="<?php echo base_url()?>js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/jquery-1.11.1.min.js"></script>
    	<script type="text/javascript">
  $("#empBirthDay").datepicker({dateFormat: 'dd-M-yy'});
 
@@ -41,7 +41,8 @@
   </tr>
   <tr>
     <td height=""></td>
-    <td><input type="submit" name="Add" id="Add" value="แก้ไขข้อมูลพนักงาน"  /></td>
+    <td><input class="checkInput" type="hidden" name="empId" id="empId" value="<?php echo $row['empId']?>" />
+    <input type="submit" name="Add" id="Add" value="แก้ไขข้อมูลพนักงาน"  /></td>
   </tr>
 </table><?php } ?>
 </form>

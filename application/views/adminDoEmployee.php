@@ -1,39 +1,5 @@
 
-<script type="text/javascript" src="<?php echo base_url()?>js/jquery-1.10.2.min.js"></script>
-   	<script type="text/javascript">
-$( document ).ready(function() {
-        
- $("#Add").click(function(event){
-	 var elem = document.getElementsByClassName("checkInput");
-	 var sum = 0;
-  	for (var i = 0; i < elems.length; ++i) {
-    if (typeof elems[i].value !== "undefined") {
-		 
-		  sum += 1;
-		  alert(sum);
-      }
-    }
-        		 $.post( 
-             "<?php echo base_url()?>index.php/doEmployee/doAdd",
-          		{empUserName: $("#empUserName").val(),
-			 	 empPassword:$("#empPassword").val(),
-				 empName: $("#empName").val(),
-				 empLastname: $("#empLastname").val(),
-				 empIdCard: $("#empIdCard").val(),
-				 empAddress: $("#empAddress").val(),
-			  	 empBirthDay:$("#empBirthDay").val(),
-				 empStatus: $("#empStatus").val()
-			  },
-             function(data) {
-                $('div.bodys').html(data);
-				alert("สมัคสมาชิกสำเร็จ");
-             }
-          ); 
-	    });
-});
- $("#empBirthDay").datepicker({dateFormat: 'dd-M-yy'});
-
-	  </script>
+<script type="text/javascript" src="<?php echo base_url()?>js/jquery-1.11.1.min.js"></script>
  <!--#############################################################################################################-->
 <script type="text/javascript">
 		$(document).ready(function(){
@@ -66,44 +32,46 @@ $( document ).ready(function() {
 	  
 	     });
 	  	
-   
+    $("#empBirthDay").datepicker({dateFormat: 'dd-M-yy'});
 	    </script>		
-  <div class="sss">
-<table width="" border="0" cellspacing="0" cellpadding="0">
+  <div class="popupLoad">
+  <form action="<?php echo base_url()?>index.php/doEmployee/doAdd" method="post">
+<table width="" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
     <td width="30%" height="35" align="left">Username</td>
-    <td width="70%"><input class="checkInput" type="text" name="empUserName" id="empUserName" /> <input class="checkInput" type="text" name="usernamess" id="usernamess" /> <div class="result"></div></td>
+    <td width="70%"><input class="checkInput" type="text" name="empUserName" id="empUserName" required="required"/>  
+    <div class="result"></div></td>
   </tr>
   <tr>
     <td height="35" align="left">Password</td>
-    <td><input class="checkInput" type="password" name="empPassword" id="empPassword" /></td>
+    <td><input class="checkInput" type="password" name="empPassword" id="empPassword" required="required"/></td>
   </tr>
   <tr>
     <td height="35" align="left">re-Password</td>
-    <td><input class="checkInput" type="password" name="empPassword2" id="empPassword2" /><div class="resultPass"></div></td>
+    <td><input class="checkInput" type="password" name="empPassword2" id="empPassword2" required="required" /><div class="resultPass"></div></td>
   </tr>
   <tr>
     <td height="34" align="left">ชื่อ</td>
-    <td><input class="checkInput" type="text" name="empName" id="empName" />    </tr>
+    <td><input class="checkInput" type="text" name="empName" id="empName" required="required"/>    </tr>
   <tr>
     <td height="40">นามสกุล</td>
-    <td><input class="checkInput" type="text" name="empLastname" id="empLastname" /></td>
+    <td><input class="checkInput" type="text" name="empLastname" id="empLastname" required="required"/></td>
   </tr>
   <tr>
     <td height="40">รหัสบัตรประชาชน</td>
-    <td><input class="checkInput" type="text" name="empIdCard" id="empIdCard" /></td>
+    <td><input class="checkInput" type="text" name="empIdCard" id="empIdCard" required="required"/></td>
   </tr>
   <tr>
     <td height="40">ทีอยู่</td>
-    <td><textarea class="checkInput" name="empAddress" id="empAddress" cols="45" rows="5"></textarea></td>
+    <td><textarea class="checkInput" name="empAddress" id="empAddress" cols="45" rows="5" required="required"></textarea></td>
   </tr>
   <tr>
-    <td height="">วันเกิด</td>
-    <td><input class="checkInput" type="date" name="empBirthDay" id="empBirthDay" /></td>
+    <td height="31">วันเกิด</td>
+    <td><input class="checkInput" type="date" name="empBirthDay" id="empBirthDay" required="required" /></td>
   </tr>
   <tr>
-    <td height="">เบอร์โทรศัพ</td>
-    <td><input class="checkInput" type="date" name="empTel" id="empTel" value="<?php echo $row['empTel']?>" /></td>
+    <td height="35">เบอร์โทรศัพ</td>
+    <td><input class="checkInput" type="text" name="empTel" id="empTel" required="required" /></td>
   </tr>
   <tr>
     <td height="40">สถานะ</td>
@@ -114,9 +82,10 @@ $( document ).ready(function() {
   </tr>
   <tr>
     <td height="40"></td>
-    <td><input type="button" name="Add" id="Add" value="เพิ่มข้อมูลผู้ขายสินค้า"  /></td>
+    <td><input type="submit" name="Add" id="Add" value="เพิ่มข้อมูลผู้ขายสินค้า" /></td>
   </tr>
 </table>
+</form>
 </div>
   <div class="bodys">
   
