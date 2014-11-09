@@ -21,8 +21,10 @@ class CheckLogin extends CI_Controller {
 		foreach($data as $r)  // สั่งวน เพื่อเก็บค่าที่อบู่ใน $data
 		$sesData = array();
 				$sesData = array(
-				  'username' => $r->empUserName,
-				  'status' => $r->empStatus
+				  'u' => $r['empUserName'],
+				  's' => $r['empStatus'],
+				  'id' => $r['empId'],
+				  'name' => $r['empName']
 				);
 	
  	 		$this->session->set_userdata('loginData',$sesData); ////นำค่า $sesData ที่เป็น array มาเก็บใน session ชื่อ loginData
@@ -43,11 +45,14 @@ class CheckLogin extends CI_Controller {
    if($this->session->userdata('loginData')) /// แรกดู ข้อมูลที่เก็บใน session ชื่อ loginData พร้อมกับ เช็คเงื่อนไขว่า มีจิงหรือ เท็จ
    {
      $session_data = $this->session->userdata('loginData');  /// แรกดู ข้อมูลที่เก็บใน session ชื่อ loginData
-	     $satus = $session_data['status'];  /// ให้ข้อมูลใน array session_data ชื่อ status เท่ากับ $satus
+	     $satus = $session_data['s'];  /// ให้ข้อมูลใน array session_data ชื่อ status เท่ากับ $satus
 			 if($satus=="owner"){ //เช็คค่า $satus ว่าเป็น admin
 				  header( 'Location: '.base_url().'index.php/admin' ); /// ไปยัง contorller Admin
 			 }else if($satus=="emp"){//เช็คค่า $satus ว่าเป็น user
 				 header( 'Location: '.base_url().'index.php/user' ); /// ไปยัง contorller user
+			 }else{//เช็คค่า $satus ว่าเป็น user
+			 	 $this->session->unset_userdata('loginData');
+				 header( 'Location: '.base_url().'index.php/home' ); /// ไปยัง contorller user
 			 }
 	}else{ /// เมื่อไม่มีข้อมูลใน $this->session->userdata('loginData')
 			   header( 'Location: '.base_url().'index.php/home' );/// ไปยัง contorller home
