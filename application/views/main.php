@@ -123,13 +123,18 @@ $('.popupLoad').fancybox({
 
 <script>
 		setInterval(function() {
-		$('.normal').toggleClass('red','addOrRemove')
+		$('.alert').toggleClass('red','addOrRemove')
 		},500);
 </script>
-
+<script>
+		function alerts(){
+			alert('แผงว่าง');
+			return false;
+		}
+</script>
 <style>
 
-	.normal{
+	.normal{/*แผงว่าง*/
 		height:30px;
 		width:30px;
 		margin:5px;
@@ -139,14 +144,34 @@ $('.popupLoad').fancybox({
 		display:block;
 
 	}
-	.red{
+	.alert{/*เกิน3เดือน*/
 		height:30px;
 		width:30px;
 		margin:5px;
+		background-color:#CCC;
+		opacity:80;
+		float:left;
+		display:block;	
+	}
+	.green{/*เกิน3เดือน*/
+		height:30px;
+		width:30px;
+		margin:5px;
+		background-color:#6F6;
+		opacity:80;
+		float:left;
+		display:block;	
+	}
+	.red{/*เกิน3เดือน*/
+		height:30px;
+		width:30px;
+		margin:5px;
+		color:#000;
 		background-color:#F00;
 		opacity:80;
 		float:left;
 		display:block;
+
 	}
 </style>
 </head>
@@ -205,11 +230,11 @@ $('.popupLoad').fancybox({
             </tr>
             <tr>
               <td width="92" align="center">username</td>
-              <td width="203"><?php echo $loginData['username'];	?></td>
+              <td width="203"><?php echo $loginData['u'];	?></td>
             </tr>
             <tr>
               <td align="center">status</td>
-              <td><?php echo $loginData['status'];	?></td>
+              <td><?php echo $loginData['s'];	?></td>
             </tr>
             <tr>
               <td colspan="2" align="center"><a href="<?php echo base_url();?>index.php/home/logout">Logout</a></td>
@@ -224,45 +249,39 @@ $('.popupLoad').fancybox({
 <table width="400" border="0">
   <tr>
     <td colspan="4" align="center" valign="middle">
-    <table width="370" border="1" align="center" >
+    <table width="330" border="1" align="center" >
   <tr align="center">
-    <td width="400" height="*"  >
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/J1" ><div class="normal">J1
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/J2" ><div class="normal">J2
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/J3" ><div class="normal">J3
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/J4" ><div class="normal">J4
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/J5" ><div class="normal">J5
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/J6" ><div class="normal">J6
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/J7" ><div class="normal">J7
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/J8" ><div class="normal">J8
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/J9" ><div class="normal">J9
-    </div></a>
+    <td width="300" height="*"  >
+       <?php foreach($result as $r){
+		 if($r['planZone']=='J'){ ?>
+     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
+	else{?>  class="popup"<?php }?>
+      >
+     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
+	 <?php 
+	}
+	} ?>
     </td>
   </tr>
 </table></td>
   </tr>
   <tr>
     <td><table width="50" border="1" align="center" >
+   
   <tr>
     <td width="40" height="*" align="center" valign="middle">
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/A1" ><div class="normal">A1
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/A2" ><div class="normal">A2
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/A3" ><div class="normal">A3
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/A4" ><div class="normal">A4
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/A5" ><div class="normal">A5
-    </div></a>
+     <?php foreach($result as $r){
+		 if($r['planZone']=='A'){ ?>
+     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
+	else{?>  class="popup"<?php }?>
+      >
+     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
+	 <?php 
+	}
+	} ?>
+    
     </td>
   </tr>
 </table>
@@ -271,68 +290,72 @@ $('.popupLoad').fancybox({
     <td><table width="90" border="1" align="center" >
   <tr>
     <td width="80" height="*"align="center" >
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/B1" ><div class="normal">B1
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/C1" ><div class="normal">C1
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/B2" ><div class="normal">B2
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/C2" ><div class="normal">C2
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/B3" ><div class="normal">B3
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/C3" ><div class="normal">C3
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/B4" ><div class="normal">B4
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/C4" ><div class="normal">C4
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/B5" ><div class="normal">B5
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/C5" ><div class="normal">C5
-    </div></a>
+       <?php foreach($result as $r){
+		 if($r['planZone']=='B'){ ?>
+     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
+	else{?>  class="popup"<?php }?>
+      >
+     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
+	 <?php 
+	}
+	} ?>
+    </td>
+    <td width="80"align="center" >
+     <?php foreach($result as $r){
+		 if($r['planZone']=='C'){ ?>
+     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
+	else{?>  class="popup"<?php }?>
+      >
+     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
+	 <?php 
+	}
+	} ?>
     </td>
   </tr>
 </table></td>
     <td><table width="90" border="1" align="center" >
   <tr>
     <td width="80" height="*" align="center" >
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/D1" ><div class="normal">D1
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/E1" ><div class="normal">E1
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/D2" ><div class="normal">D2
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/E2" ><div class="normal">E2
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/D3" ><div class="normal">D3
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/E3" ><div class="normal">E3
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/D4" ><div class="normal">D4
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/E4" ><div class="normal">E4
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/D5" ><div class="normal">D5
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/E5" ><div class="normal">E5
-    </div></a>
+      <?php foreach($result as $r){
+		 if($r['planZone']=='D'){ ?>
+     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
+	else{?>  class="popup"<?php }?>
+      >
+     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
+	 <?php 
+	}
+	} ?>
+    </td>
+    <td width="80" align="center" >  
+	 <?php foreach($result as $r){
+		 if($r['planZone']=='E'){ ?>
+     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
+	else{?>  class="popup"<?php }?>
+      >
+     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
+	 <?php 
+	}
+	} ?>
     </td>
   </tr>
 </table></td>
     <td><table width="50" border="1" align="center" >
   <tr>
     <td width="40" height="*" align="center" >
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/F1" ><div class="normal">F1
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/F2" ><div class="normal">F2
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/F3" ><div class="normal">F3
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/F4" ><div class="normal">F4
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/F5" ><div class="normal">F5
-    </div></a>
+       <?php foreach($result as $r){
+		 if($r['planZone']=='F'){ ?>
+     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
+	else{?>  class="popup"<?php }?>
+      >
+     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
+	 <?php 
+	}
+	} ?>
     </td>
   </tr>
 </table></td>
@@ -341,16 +364,16 @@ $('.popupLoad').fancybox({
     <td><table width="50" border="1" align="center" >
   <tr>
     <td width="40" height="*" align="center">
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/H1" ><div class="normal">H1
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/H2" ><div class="normal">H2
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/H3" ><div class="normal">H3
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/H4" ><div class="normal">H4
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/H5" ><div class="normal">H5
-    </div></a>
+       <?php foreach($result as $r){
+		 if($r['planZone']=='G'){ ?>
+     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
+	else{?>  class="popup"<?php }?>
+      >
+     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
+	 <?php 
+	}
+	} ?>
     </td>
   </tr>
 </table></td>
@@ -358,16 +381,16 @@ $('.popupLoad').fancybox({
     <td><table width="50" border="1" align="center" >
       <tr>
         <td width="40" height="*" align="center">
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/I1" ><div class="normal">I1
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/I2" ><div class="normal">I2
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/I3" ><div class="normal">I3
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/I4" ><div class="normal">I4
-    </div></a>
-    <a class="popup" href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/I5" ><div class="normal">I5
-    </div></a>
+      <?php foreach($result as $r){
+		 if($r['planZone']=='H'){ ?>
+     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
+	else{?>  class="popup"<?php }?>
+      >
+     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
+	 <?php 
+	}
+	} ?>
         </td>
         </tr>
       </table>
