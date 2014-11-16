@@ -206,6 +206,7 @@ function addEmployee()
 					   'empIdCard' => $this->getEmpIdCard(),
 					   'empAddress' => $this->getEmpAddress(),
 					   'empBirthDay' => $this->getEmpBirthDay(),
+					   'empTel' => $this->getEmpTel(),
 					   'empStatus' => $this->getEmpStatus()
 					);
 			$this->db->insert('tblEmployee',$data);

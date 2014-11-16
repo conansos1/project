@@ -1,54 +1,134 @@
 
 <script type="text/javascript" src="<?php echo base_url()?>js/jquery-1.11.1.min.js"></script>
  <!--#############################################################################################################-->
-<script type="text/javascript">
-		$(document).ready(function(){
+<script language="javascript">
+	$(document).ready(function() {
+		$( "#empUsername" ).focus(function() {
+				$( "#empUsername" ).trigger("click");
+	});
+	$( "#empUsername" ).keyup(function() {
+				$( "#empUsername" ).trigger("click");
+	});
+	$( "#empUsername" ).click(function() {
+		 if($(this).val()!=""){
+		$.post("<?php echo base_url()?>index.php/doEmployee/checkUser",
+						  {
+							username:$(this).val()
+						  },
+						  function(data){
+						    if(data==1){
+								$('#memberUsernameResult').html("<img src='<?php echo base_url()?>img/x.png' width='25'>");
+								$('#memberUsernameC').val($("#empUsername").val());
+							}else if(data==0){
+								$('#memberUsernameResult').html("<img src='<?php echo base_url()?>img/y.png' width='25'>");
+								$('#memberUsernameC').val(0);
+							}
+						  });
+		 }else{
+			 $('#memberUsernameResult').html("<img src='<?php echo base_url()?>img/x.png' width='25'>");
+			 $('#memberUsernameC').val(0);
+		 }
+	});
 	
-			 $("#empUserName").keyup(function(event){
-        		 $.post( 
-             "<?php echo base_url();?>index.php/doEmployee/checkUser",
-             { empUserName: $("#empUserName").val() },
-          	function(data) { 
-			if(data==false){
-				$(".result").html("<img src='<?php echo base_url();?>img/x.png' width='50px' height='50px'>"),$("#usernamess").val(null);
-			 }else{$("#usernamess").val(data),
-			   	$(".result").html("<img src='<?php echo base_url();?>img/y.png' width='50px' height='50px'>"); 
-			   }
-				
-			 }
+	
+	
+	
+	$( "#empPassword" ).focus(function() {
+				$( "#empPassword" ).trigger("click");
+	});
+	$( "#empPassword" ).keyup(function() {
+				$( "#empPassword" ).trigger("click");
+	});
+$( "#empPassword" ).click(function() {
+	var value = $(this).val();
+if(value!=""){
+		 if(value==$( "#memberPasswordC" ).val()){
+			 $('#memberPasswordResult').html("<font color='GREEN'>รหัสผ่านสามารถใช้ได้</font>");
+			 $('#memberPasswordCheck').val(value);
+		 }else{
+			 $('#memberPasswordResult').html("<font color='#E40003'>รหัสผ่านไม่ตรงกัน</font>");
+			 $('#memberPasswordCheck').val(0);
+		 }
+}else{
+	$('#memberPasswordResult').html("<font color='#E40003'>รหัสผ่านไม่ตรงกัน</font>");
+	$('#memberPasswordCheck').val(0);
+}
+	});
+	
+$( "#memberPasswordC" ).focus(function() {
+				$( "#memberPasswordC" ).trigger("click");
+	});
+	$( "#memberPasswordC" ).keyup(function() {
+				$( "#memberPasswordC" ).trigger("click");
+	});
+$( "#memberPasswordC" ).click(function() {
+	var value = $(this).val();
+if(value!=""){
+		 if(value==$( "#empPassword" ).val()){
+			 $('#memberPasswordResult').html("<font color='GREEN'>รหัสผ่านสามารถใช้ได้</font>");
+			 $('#memberPasswordCheck').val(value);
+		 }else{
+			 $('#memberPasswordResult').html("<font color='#E40003'>รหัสผ่านไม่ตรงกัน</font>");
+			 $('#memberPasswordCheck').val(0);
+		 }
+}else{
+	$('#memberPasswordResult').html("<font color='#E40003'>รหัสผ่านไม่ตรงกัน</font>");
+	$('#memberPasswordCheck').val(0);
+}
+	});
 
-          ); 
+	});
+ </script>
+ <script language="javascript">
+function checkForm() 
+{ if(!checkID(document.form1.empIdCard.value)) 
+ $('#memberIdIDCardResult').html('<font color="red">รหัสประชาชนไม่ถูกต้อง</font>');
+else  $('#memberIdIDCardResult').html('<font color="green">รหัสประชาชนถูกต้อง</font>');}
+ function checkID(id){ 
 		
-      });
-		 $("#empPassword , #empPassword2").keyup(function(event){	
-			if($("#empPassword").val()==$("#empPassword2").val()){
-				
-					$('.resultPass').html("<font color='GREEN'>password ใช้ได้</font>");
-				}else{
-					$('.resultPass').html("<font color='RED'>password ไม่ตรงกัน</font>");
-				}
-		
-     		 });
-	  
-	     });
-	  	
-    $("#empBirthDay").datepicker({dateFormat: 'dd-M-yy'});
-	    </script>		
+if(id.length != 13) return false; 
+for(i=0, sum=0; i < 12; i++) 
+sum += parseFloat(id.charAt(i))*(13-i); if((11-sum%11)%10!=parseFloat(id.charAt(12))) 
+return false; return true;}
+		function chkSubmit()
+	{
+			a = document.getElementById("empTel");
+			if(a.value*1!=a.value){
+				alert('เบอร์โทศัพท์ กรุณากรอกเป็นตัวเลขเท่านั้น');
+				return false;
+			}else{
+				return true;
+			}
+
+	}
+function checkValue(){
+	var num = document.getElementById("empTel").value;
+	if(num<0){
+		alert('กรุณากรอกเป็นตัวเลขเท่านั้น');
+		document.getElementById("empTel").value = 0;
+	}else{
+				return true;
+		}
+	
+}
+ </script>
   <div class="popupLoad">
-  <form action="<?php echo base_url()?>index.php/doEmployee/doAdd" method="post">
+  <form name="form1" action="<?php echo base_url()?>index.php/doEmployee/doAdd" method="post" onSubmit="return chkSubmit();" >
 <table width="" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
     <td width="30%" height="35" align="left">Username</td>
-    <td width="70%"><input class="checkInput" type="text" name="empUserName" id="empUserName" required="required"/>  
-    <div class="result"></div></td>
+    <td width="70%"><input name="empUsername" type="text"  required id="empUsername" autocomplete='off' maxlength="8" min="4">
+        <a id="memberUsernameResult"></a><input type="hidden" name="memberUsernameC" id="memberUsernameC" value="0"  required></td>
   </tr>
   <tr>
     <td height="35" align="left">Password</td>
-    <td><input class="checkInput" type="password" name="empPassword" id="empPassword" required="required"/></td>
+    <td><input name="empPassword" type="text"  required id="empPassword" maxlength="16" min="4"></td>
   </tr>
   <tr>
     <td height="35" align="left">re-Password</td>
-    <td><input class="checkInput" type="password" name="empPassword2" id="empPassword2" required="required" /><div class="resultPass"></div></td>
+    <td>
+    <input name="memberPasswordC" type="text"  required id="memberPasswordC" maxlength="16">
+<a id="memberPasswordResult"></a><input type="hidden" name="memberPasswordCheck" id="memberPasswordCheck"  required></td>
   </tr>
   <tr>
     <td height="34" align="left">ชื่อ</td>
@@ -59,7 +139,8 @@
   </tr>
   <tr>
     <td height="40">รหัสบัตรประชาชน</td>
-    <td><input class="checkInput" type="text" name="empIdCard" id="empIdCard" required="required"/></td>
+    <td><input type="text" name="empIdCard" id="memberIdIDCard" onFocus="checkForm();" onKeyUp="checkForm();" required><a id="memberIdIDCardResult"></a>
+    </td>
   </tr>
   <tr>
     <td height="40">ทีอยู่</td>
@@ -70,8 +151,8 @@
     <td><input class="checkInput" type="date" name="empBirthDay" id="empBirthDay" required="required" /></td>
   </tr>
   <tr>
-    <td height="35">เบอร์โทรศัพ</td>
-    <td><input class="checkInput" type="text" name="empTel" id="empTel" required="required" /></td>
+    <td height="35">เบอร์โทรศัพท์</td>
+    <td><input name="empTel" type="text" required class="checkInput" id="empTel" onClick="checkValue();" onKeyUp="checkValue();" maxlength="10"></td>
   </tr>
   <tr>
     <td height="40">สถานะ</td>

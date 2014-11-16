@@ -73,7 +73,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', end
 		box-shadow:0px 0px 5px 5px #CCCCCC;
 	}
 	body{
-	background-image:url(<?php echo base_url();?>img/bg.png);
+	background-image:url(<?php echo base_url();?>img/bg2.jpg);
 	background-attachment:fixed;
 	}
 </style>
@@ -91,18 +91,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', end
 			
 		 });
 		$('.popup').fancybox({
-			height :	'500',
-				width :	'80%',
+			height :	'90%',
+				width :	'40%',
 				autoSize : false,
 				scrolling : 'auto',
 				arrows : false,
-				type				: 'iframe'
-	
-	
+				type				: 'iframe'	
 });
 
 $('.popupLoad').fancybox({
-			height :	'500',
+			height :	'100%',
 				width :	'80%',
 				autoSize : false,
 				scrolling : 'auto',
@@ -270,10 +268,9 @@ $('.popupLoad').fancybox({
     <td><table width="50" border="1" align="center" >
    
   <tr>
-    <td width="40" height="*" align="center" valign="middle">
-     <?php foreach($result as $r){
+    <td width="40" height="*" align="center" valign="middle"><?php foreach($result as $r){
 		 if($r['planZone']=='A'){ ?>
-     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
+      <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
     <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
 	else{?>  class="popup"<?php }?>
       >
