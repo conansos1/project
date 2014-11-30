@@ -180,23 +180,142 @@
 	position:relative;
 	top:1px;
 }
+a {
+        color: #ccc;
+    }
+    
+    /*-------------------------------------*/
+    
+    .cf:before, .cf:after{
+      content:"";
+      display:table;
+    }
+    
+    .cf:after{
+      clear:both;
+    }
+
+    .cf{
+      zoom:1;
+    }
+
+    /*-------------------------------------*/	
+    
+    .form-wrapper {
+        width: 100%;
+        padding: 15px;
+        
+        background: #444;
+        background: rgba(0,0,0,.2);
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+        box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    }
+    
+    .form-wrapper input {
+        width: 330px;
+        height: 30px;
+        padding: 10px 5px;
+        float: left;    
+        font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        border: 0;
+        background: #eee;
+        -moz-border-radius: 3px 0 0 3px;
+        -webkit-border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px;      
+    }
+    
+    .form-wrapper input:focus {
+        outline: 0;
+        background: #fff;
+        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    }
+    
+    .form-wrapper input::-webkit-input-placeholder {
+       color: #999;
+       font-weight: normal;
+       font-style: italic;
+    }
+    
+    .form-wrapper input:-moz-placeholder {
+        color: #999;
+        font-weight: normal;
+        font-style: italic;
+    }
+    
+    .form-wrapper input:-ms-input-placeholder {
+        color: #999;
+        font-weight: normal;
+        font-style: italic;
+    }    
+    
+    .form-wrapper button {
+		overflow: visible;
+        position: relative;
+        float: right;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        height: 40px;
+        width: 110px;
+        font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        color: #fff;
+        text-transform: uppercase;
+        background: #d83c3c;
+        -moz-border-radius: 0 3px 3px 0;
+        -webkit-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;      
+        text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+    }   
+      
+    .form-wrapper button:hover{		
+        background: #e54040;
+    }	
+      
+    .form-wrapper button:active,
+    .form-wrapper button:focus{   
+        background: #c42f2f;    
+    }
+    
+    .form-wrapper button:before {
+        content: '';
+        position: absolute;
+        border-width: 8px 8px 8px 0;
+        border-style: solid solid solid none;
+        border-color: transparent #d83c3c transparent;
+        top: 12px;
+        left: -6px;
+    }
+    
+    .form-wrapper button:hover:before{
+        border-right-color: #e54040;
+    }
+    
+    .form-wrapper button:focus:before{
+        border-right-color: #c42f2f;
+    }    
+    
+    .form-wrapper button::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
 
 </style>
 
 </head>
 
 <body>
-<br/><br/><br/><br/>
-<form id="form1" name="form1" method="post" action="<?php echo base_url()?>index.php/doEmployee/searchData">
-<table width="" border="1" cellspacing="0" cellpadding="0" align="center">
+<form class="form-wrapper cf" id="form1" name="form1" method="post" action="<?php echo base_url()?>index.php/doEmployee/searchData">
+<table width="" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
-    <td>
-      <input type="text" name="keyword" id="keyword" />
-    </td>
-    <td><input name="submit" type="submit" value="ค้นหา"/></td></form>
-    <form id="form1" name="form1" method="post" action="<?php echo base_url()?>index.php/doEmployee/doAddEmp">
-    	<td><input name="submit" type="submit" value="เพิ่มพนักงาน"/></td>
-	</form>
+    <td><input type="text" name="keyword" id="keyword" placeholder="ค้นหาจาก ชื่อ,นามสกุล,เลขบัตรประชาชน" required></td>
+    <td><button type="submit">ค้นหา</button></td></form>
+    	<td><a href="<?php echo base_url()?>index.php/doEmployee/doAddEmp" class="popup" ><img height="80" src="<?php echo base_url()?>img/iconAdd.png" /></a></td>
   </tr>
 </table>
 
@@ -204,26 +323,26 @@
 <table class="CSSTableGenerator">
 
   <tr>
-    <td width="">id</td>
     <td width="">ชื่อ</td>
     <td width="">นามสกุล</td>
     <td width="">รหัสบัตรประชาชน</td>
     <td width="">ที่อยู่</td>
     <td width="">วันเกิด</td>
     <td width="">หมายเลขโทรศัพย์</td>
+    <td width="">วันที่เริ่มงาน</td>
     <td width="">สถานะ</td>
     <td width="">แก้ไข</td>
     <td width="">ลบ</td>
   </tr>
   <?php foreach($showAll as $row){?>
   <tr>
-    <td><?php echo $row['empId'];?></td>
     <td><?php echo $row['empName'];?></td>
     <td><?php echo $row['empLastname'];?></td>
     <td><?php echo $row['empIdCard'];?></td>
     <td><?php echo $row['empAddress'];?></td>
     <td><?php echo $row['empBirthDay'];?></td>
     <td><?php echo $row['empTel'];?></td>
+    <td><?php echo $row['empDateStart'];?></td>
     <td><?php echo $row['empStatus'];?></td>
     <td><a class="popupLoad" id="edit" name="update" href="<?php echo base_url();?>index.php/doEmployee/upDate/<?php echo $row['empId'];?>" class="submenu" title="home">Edit</a> </td>
     <td><a class="popupLoad" id="delete" name="update" href="<?php echo base_url()?>index.php/doEmployee/doDelete/<?php echo $row['empId'];?>">Delete</a></td>

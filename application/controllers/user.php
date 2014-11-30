@@ -91,6 +91,17 @@ function index(){  	  //// ฟังชั่นในการเรียก�
 	return $data;
 	
 	}
+	function showAllData(){
+		$data['showAll'] = $this->Customer->showAllData();
+		$this->load->view('empDoShow',$data);
+	}
+	function searchData(){
+		$keyword = $this->input->post('keyword');
+        $data['showAll'] = $this->Customer->searchData($keyword);
+        $this->load->view('empDoShow',$data);
+	}
+	
+	
 }
 
 ?>
