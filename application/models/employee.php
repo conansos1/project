@@ -176,7 +176,7 @@ class Employee extends CI_Model {
 function login()
  {
    $this -> db -> select('*');  						###########
-   $this -> db -> from('tblEmployee'); 						 ########### เช็คข้อมูลใน DB 
+   $this -> db -> from('tblemployee'); 						 ########### เช็คข้อมูลใน DB 
    $this -> db -> where('empUserName',$this->getEmpUserName()); ###########
    $this -> db -> where('empPassword', MD5($this->getEmpPassword())); ###########
    $this -> db -> limit(1); ############## ตำกัดให้คืนค่าแค่ record เดียว
@@ -209,11 +209,11 @@ function addEmployee()
 					   'empTel' => $this->getEmpTel(),
 					   'empStatus' => $this->getEmpStatus()
 					);
-			$this->db->insert('tblEmployee',$data);
+			$this->db->insert('tblemployee',$data);
 	}
 	function checkUserName($empUserName){
 		$data = array('empUserName'=> $empUserName);
-		$datas = $this->db->get_where('tblEmployee',$data,1)->result_array();
+		$datas = $this->db->get_where('tblemployee',$data,1)->result_array();
 		$i = count($datas);
 		if($i==1){
 			return false;
@@ -223,13 +223,13 @@ function addEmployee()
 	
 	}
 	function showAllData(){
-		$query = $this->db->get('tblEmployee')->result_array();
+		$query = $this->db->get('tblemployee')->result_array();
 		return $query;
 	}
 	function updateEmp($empId)
 	{
-		$this->db->where('tblEmployee.empId', $empId);
-		$query = $this->db->get('tblEmployee')->result_array();
+		$this->db->where('tblemployee.empId', $empId);
+		$query = $this->db->get('tblemployee')->result_array();
 		return $query;
 	}
 	function upDateEmployee()
@@ -244,13 +244,13 @@ function addEmployee()
 					   'empTel' => $this->getEmpTel(),
 					   'empStatus' => $this->getEmpStatus()
 					);
-			$this->db->where('tblEmployee.empId',$this->getEmpId());
-			$this->db->update('tblEmployee',$data);
+			$this->db->where('tblemployee.empId',$this->getEmpId());
+			$this->db->update('tblemployee',$data);
 	}
 	function delete($empId)
 	{
-	$this->db->from('tblEmployee');
-	$this->db->where('tblEmployee.empId',$empId);
+	$this->db->from('tblemployee');
+	$this->db->where('tblemployee.empId',$empId);
 	if	($this->db->delete())
 		{
 		echo "";
@@ -262,10 +262,10 @@ function addEmployee()
 	}
 	function searchData($keyword)
 	{
-		$this->db->like('tblEmployee.empName',$keyword);
-		$this->db->or_like('tblEmployee.empLastname',$keyword);
-		$this->db->or_like('tblEmployee.empIdCard',$keyword);
-		$query  =  $this->db->get('tblEmployee')->result_array();
+		$this->db->like('tblemployee.empName',$keyword);
+		$this->db->or_like('tblemployee.empLastname',$keyword);
+		$this->db->or_like('tblemployee.empIdCard',$keyword);
+		$query  =  $this->db->get('tblemployee')->result_array();
 		return $query;
 			
 	}

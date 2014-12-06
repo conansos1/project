@@ -64,13 +64,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', end
  <script type="text/javascript" src="<?php echo base_url()?>js/fancy/lib/jquery.mousewheel-3.0.6.pack.js"></script>
 	<script type="text/javascript" src="<?php echo base_url()?>js/fancy/source/jquery.fancybox.js?v=2.1.5"></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>js/fancy/source/jquery.fancybox.css?v=2.1.5" media="screen" />
-
  <script type="text/javascript">
-<<<<<<< HEAD
   
-=======
- 
->>>>>>> 1a7c751c43a9f1f6c4dfa848937d211c39a7b0e0
 		$(document).ready(function(){
 			$('.load').load( "<?php echo base_url()?>index.php/admin/contantMain" );
 			 $(".submenu").click(function(event) {
@@ -86,7 +81,6 @@ $navList.on('click', 'li:not(.selected)', function(e){
   $(e.currentTarget).addClass("selected");
 });
 		 });
-<<<<<<< HEAD
 		 /*
 Navigation from YNAB (http://www.youneedabudget.com) made in pure CSS using pseudo elements.
 
@@ -103,16 +97,6 @@ This JS just append the class "selected" to the clicked item.
 		$('.popup').fancybox({
 			height :	'100%',
 				width :	'32%',
-=======
-		 $( "#settings" ).on( "click", function()
-			{
-			  $( "#menu" ).fadeToggle( "fast" );
-			});
-			
-		$('.popup').fancybox({
-			height :	'100%',
-				width :	'40%',
->>>>>>> 1a7c751c43a9f1f6c4dfa848937d211c39a7b0e0
 				autoSize : false,
 				scrolling : 'auto',
 				arrows : false,
@@ -127,7 +111,6 @@ This JS just append the class "selected" to the clicked item.
 $('.popupLoad').fancybox({
 			height :	'110%',
 				width :	'100%',
-<<<<<<< HEAD
 				autoSize : false,
 				scrolling : 'auto',
 				arrows : false,
@@ -141,8 +124,6 @@ $('.popupLoad').fancybox({
 $('.popupEdit').fancybox({
 			height :	'55%',
 				width :	'40%',
-=======
->>>>>>> 1a7c751c43a9f1f6c4dfa848937d211c39a7b0e0
 				autoSize : false,
 				scrolling : 'auto',
 				arrows : false,
@@ -230,22 +211,6 @@ $('.popupEdit').fancybox({
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 
 <div class="header"><center>
-<<<<<<< HEAD
-=======
-<div class="logo"> <img src="<?php echo base_url();?>img/logo.png" </div>
-</center></div>
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 1a7c751c43a9f1f6c4dfa848937d211c39a7b0e0
 <div class="wrapper">
   <h1></h1>
   <!--ul.nav-list>li*5>a-->
@@ -266,15 +231,10 @@ $('.popupEdit').fancybox({
 
 
 
-<<<<<<< HEAD
 
 
 <div class="" id="loginform">
   <table width="14%" border="0" align="center" cellpadding="5" cellspacing="0">
-=======
-<div class="CSSTableStatus">
-  <table width="100%" border="0" align="center">
->>>>>>> 1a7c751c43a9f1f6c4dfa848937d211c39a7b0e0
           <tbody>
             <tr>
               <td colspan="2" align="center">หน้า admin</td>
@@ -296,165 +256,6 @@ $('.popupEdit').fancybox({
 
 <div class="load" align="center">
 
-<<<<<<< HEAD
-=======
-<body>
-<br/>
-<table width="400" border="0">
-  <tr>
-    <td colspan="4" align="center" valign="middle">
-    <table width="330" border="1" align="center" >
-  <tr align="center">
-    <td width="300" height="*"  >
-       <?php foreach($result as $r){
-		 if($r['planZone']=='J'){ ?>
-     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
-    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
-	else{?>  class="popup"<?php }?>
-      >
-     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
-	 <?php 
-	}
-	} ?>
-    </td>
-  </tr>
-</table></td>
-  </tr>
-  <tr>
-    <td><table width="50" border="1" align="center" >
-   
-  <tr>
-    <td width="40" height="*" align="center" valign="middle"><?php foreach($result as $r){
-		 if($r['planZone']=='A'){ ?>
-      <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
-    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
-	else{?>  class="popup"<?php }?>
-      >
-     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
-	 <?php 
-	}
-	} ?>
-    
-    </td>
-  </tr>
-</table>
-
-</td>
-    <td><table width="90" border="1" align="center" >
-  <tr>
-    <td width="80" height="*"align="center" >
-       <?php foreach($result as $r){
-		 if($r['planZone']=='B'){ ?>
-     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
-    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
-	else{?>  class="popup"<?php }?>
-      >
-     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
-	 <?php 
-	}
-	} ?>
-    </td>
-    <td width="80"align="center" >
-     <?php foreach($result as $r){
-		 if($r['planZone']=='C'){ ?>
-     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
-    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
-	else{?>  class="popup"<?php }?>
-      >
-     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
-	 <?php 
-	}
-	} ?>
-    </td>
-  </tr>
-</table></td>
-    <td><table width="90" border="1" align="center" >
-  <tr>
-    <td width="80" height="*" align="center" >
-      <?php foreach($result as $r){
-		 if($r['planZone']=='D'){ ?>
-     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
-    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
-	else{?>  class="popup"<?php }?>
-      >
-     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
-	 <?php 
-	}
-	} ?>
-    </td>
-    <td width="80" align="center" >  
-	 <?php foreach($result as $r){
-		 if($r['planZone']=='E'){ ?>
-     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
-    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
-	else{?>  class="popup"<?php }?>
-      >
-     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
-	 <?php 
-	}
-	} ?>
-    </td>
-  </tr>
-</table></td>
-    <td><table width="50" border="1" align="center" >
-  <tr>
-    <td width="40" height="*" align="center" >
-       <?php foreach($result as $r){
-		 if($r['planZone']=='F'){ ?>
-     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
-    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
-	else{?>  class="popup"<?php }?>
-      >
-     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
-	 <?php 
-	}
-	} ?>
-    </td>
-  </tr>
-</table></td>
-  </tr>
-  <tr>
-    <td><table width="50" border="1" align="center" >
-  <tr>
-    <td width="40" height="*" align="center">
-       <?php foreach($result as $r){
-		 if($r['planZone']=='G'){ ?>
-     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
-    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
-	else{?>  class="popup"<?php }?>
-      >
-     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
-	 <?php 
-	}
-	} ?>
-    </td>
-  </tr>
-</table></td>
-    <td colspan="2" align="center" valign="middle"><h1>P</h1>    </td>
-    <td><table width="50" border="1" align="center" >
-      <tr>
-        <td width="40" height="*" align="center">
-      <?php foreach($result as $r){
-		 if($r['planZone']=='H'){ ?>
-     <a href="<?php echo base_url();?>index.php/doDetail/searchDataPlan/<?php echo $r['planId'] ?>" 
-    <?php if($r['month']=='normal'){?> onclick="return alerts();"<?php }
-	else{?>  class="popup"<?php }?>
-      >
-     <div class="<?php echo $r['month']?>" ><?php echo $r['planId'] ?> </div></a>
-	 <?php 
-	}
-	} ?>
-        </td>
-        </tr>
-      </table>
-      
-  </tr>
-</table></td>
-  </tr>
-</table>
-
-
->>>>>>> 1a7c751c43a9f1f6c4dfa848937d211c39a7b0e0
 
 </div>
 
