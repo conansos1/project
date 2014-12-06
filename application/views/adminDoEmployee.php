@@ -112,11 +112,24 @@ function checkValue(){
 	
 }
  </script>
-
-  <div class="popupLoad"><center><h2>เพิ่มพนักงาน</h2></center>
+  <div class="popupLoad">
   <form name="form1" action="<?php echo base_url()?>index.php/doEmployee/doAdd" method="post" onSubmit="return chkSubmit();" >
 <table width="" border="0" cellspacing="0" cellpadding="0" align="center">
-  
+  <tr>
+    <td width="30%" height="35" align="left">Username</td>
+    <td width="70%"><input name="empUsername" type="text"  required id="empUsername" autocomplete='off' maxlength="8" min="4">
+        <a id="memberUsernameResult"></a><input type="hidden" name="memberUsernameC" id="memberUsernameC" value="0"  required></td>
+  </tr>
+  <tr>
+    <td height="35" align="left">Password</td>
+    <td><input name="empPassword" type="text"  required id="empPassword" maxlength="16" min="4"></td>
+  </tr>
+  <tr>
+    <td height="35" align="left">re-Password</td>
+    <td>
+    <input name="memberPasswordC" type="text"  required id="memberPasswordC" maxlength="16">
+<a id="memberPasswordResult"></a><input type="hidden" name="memberPasswordCheck" id="memberPasswordCheck"  required></td>
+  </tr>
   <tr>
     <td height="34" align="left">ชื่อ</td>
     <td><input class="checkInput" type="text" name="empName" id="empName" required="required"/>    </tr>
@@ -140,21 +153,6 @@ function checkValue(){
   <tr>
     <td height="35">เบอร์โทรศัพท์</td>
     <td><input name="empTel" type="text" required class="checkInput" id="empTel" onClick="checkValue();" onKeyUp="checkValue();" maxlength="10"></td>
-  </tr>
-  <tr>
-    <td width="30%" height="35" align="left">Username</td>
-    <td width="70%"><input name="empUsername" type="text"  required id="empUsername" autocomplete='off' maxlength="8" min="4">
-        <a id="memberUsernameResult"></a><input type="hidden" name="memberUsernameC" id="memberUsernameC" value="0"  required></td>
-  </tr>
-  <tr>
-    <td height="35" align="left">Password</td>
-    <td><input name="empPassword" type="text"  required id="empPassword" maxlength="16" min="4"></td>
-  </tr>
-  <tr>
-    <td height="35" align="left">re-Password</td>
-    <td>
-    <input name="memberPasswordC" type="text"  required id="memberPasswordC" maxlength="16">
-<a id="memberPasswordResult"></a><input type="hidden" name="memberPasswordCheck" id="memberPasswordCheck"  required></td>
   </tr>
   <tr>
     <td height="40">สถานะ</td>

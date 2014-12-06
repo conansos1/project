@@ -4,7 +4,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style>
-	
+	.header{
+		position:fixed;
+		width:100%;
+		height:50px;
+		z-index:1000;
+		margin-top:-55px;
+		box-shadow:0px 3px 5px 1px #CCCCCC;	
+		
+		background: #e6f0a3; /* Old browsers */
+background: -moz-linear-gradient(top,  #e6f0a3 0%, #e6f0a3 71%, #d2e638 81%, #d2e638 83%, #d2e638 87%, #c3d825 94%, #c3d825 97%, #dbf043 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e6f0a3), color-stop(71%,#e6f0a3), color-stop(81%,#d2e638), color-stop(83%,#d2e638), color-stop(87%,#d2e638), color-stop(94%,#c3d825), color-stop(97%,#c3d825), color-stop(100%,#dbf043)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #e6f0a3 0%,#e6f0a3 71%,#d2e638 81%,#d2e638 83%,#d2e638 87%,#c3d825 94%,#c3d825 97%,#dbf043 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #e6f0a3 0%,#e6f0a3 71%,#d2e638 81%,#d2e638 83%,#d2e638 87%,#c3d825 94%,#c3d825 97%,#dbf043 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #e6f0a3 0%,#e6f0a3 71%,#d2e638 81%,#d2e638 83%,#d2e638 87%,#c3d825 94%,#c3d825 97%,#dbf043 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #e6f0a3 0%,#e6f0a3 71%,#d2e638 81%,#d2e638 83%,#d2e638 87%,#c3d825 94%,#c3d825 97%,#dbf043 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6f0a3', endColorstr='#dbf043',GradientType=0 ); /* IE6-9 */
+
+
+	}
 	.menu{
 		
 		position:fixed;
@@ -63,9 +81,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', end
  <script type="text/javascript" src="<?php echo base_url()?>js/fancy/lib/jquery.mousewheel-3.0.6.pack.js"></script>
 	<script type="text/javascript" src="<?php echo base_url()?>js/fancy/source/jquery.fancybox.js?v=2.1.5"></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>js/fancy/source/jquery.fancybox.css?v=2.1.5" media="screen" />
-
  <script type="text/javascript">
- 
 		$(document).ready(function(){
 			 $(".submenu").click(function(event) {
 				    event.preventDefault();
@@ -74,13 +90,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', end
             });
 			
 		 });
-		 $( "#settings" ).on( "click", function()
-			{
-			  $( "#menu" ).fadeToggle( "fast" );
-			});
-			
 		$('.popup').fancybox({
-			height :	'100%',
+			height :	'90%',
 				width :	'40%',
 				autoSize : false,
 				scrolling : 'auto',
@@ -89,8 +100,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', end
 });
 
 $('.popupLoad').fancybox({
-			height :	'110%',
-				width :	'100%',
+			height :	'100%',
+				width :	'80%',
 				autoSize : false,
 				scrolling : 'auto',
 				arrows : false,
@@ -106,8 +117,6 @@ $('.popupLoad').fancybox({
 
 	    </script>
 <link type="text/css" href="<?php echo base_url();?>css/menucss.css" rel="stylesheet"/>
-<link type="text/css" href="<?php echo base_url();?>css/table.css" rel="stylesheet"/>
-<link type="text/css" href="<?php echo base_url();?>css/header.css" rel="stylesheet"/>
 
 
 <script>
@@ -168,19 +177,7 @@ $('.popupLoad').fancybox({
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 
-<div class="header"><center>
-<div class="logo"> <img src="<?php echo base_url();?>img/logo.png" </div>
-</center></div>
-
-
-
-
-
-
-
-
-
-
+<div class="header"><center><h2>Header</h2></center></div>
 
 <div class="wrapper">
   <nav class="vertical">
@@ -223,8 +220,8 @@ $('.popupLoad').fancybox({
 
 
 
-<div class="CSSTableStatus">
-  <table width="100%" border="0" align="center">
+<div class="menu">
+  <table width="100%" border="1" align="center">
           <tbody>
             <tr>
               <td colspan="2" align="center">หน้า admin</td>
@@ -247,7 +244,6 @@ $('.popupLoad').fancybox({
 <div class="load" align="center">
 
 <body>
-<br/>
 <table width="400" border="0">
   <tr>
     <td colspan="4" align="center" valign="middle">
