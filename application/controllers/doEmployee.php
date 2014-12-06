@@ -31,7 +31,7 @@ class doEmployee extends CI_Controller {
 		//$code = $this->employee->returnorderSupplies();
 		//$code = $code+1;
 		//$this->employee->setSuppliesId($code);
-		$this->Employee->setEmpUserName($this->input->post('empUserName'));
+		$this->Employee->setEmpUserName($this->input->post('empUsername'));
 		MD5($this->Employee->setEmpPassword($this->input->post('empPassword')));
 		$this->Employee->setEmpName($this->input->post('empName'));
 		$this->Employee->setEmpLastname($this->input->post('empLastname'));
@@ -82,7 +82,7 @@ class doEmployee extends CI_Controller {
 	function searchData(){
 		$keyword = $this->input->post('keyword');
         $data['showAll'] = $this->Employee->searchData($keyword);
-        $this->load->view('adminDoShow',$data);
+        $this->load->view('adminDoShowResult',$data);
 	}
 }
 

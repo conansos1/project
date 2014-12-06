@@ -7,51 +7,9 @@ function __construct()
  }
 
 function index(){  	  //// ฟังชั่นในการเรียกใช้งานครั้งแรก 
-		$data['planActive'] = $this->Detail->getTestAll();
-			$data['all'] = $this->Detail->getNotActiveAll();
-			$date='2014-7-8';
-			//var_dump($data['planActive']);
-			//var_dump($data['all']);
-			for($out=0;$out<count($data['planActive']);$out++){
-				for($i=0;$i<count($data['all']);$i++){
-					
-					if($data['planActive'][$out]['planId']==$data['all'][$i]['planId']){			
-						$num=$i;
-						//sort($data['all']);
-						
-						
-						unset($data['all'][$num]);
-					}else{
-						$data['all'][$out]['detailStatus']=NULL;
-						$data['all'][$out]['month']='normal';
-						
-					}	
-					$data['planActive'][$out]['month']=$this->calDatePayment($data['planActive'][$out]['rentDate']);
-					sort($data['all']);	
-				}
-				
-				sort($data['all']);
-			}
-
-				$data['result'] = $data['planActive'];
-				sort($data['result']);
-			for($c=1;$c<count($data['all']);$c++){
-				array_push($data['result'],$data['all'][$c]);
-				//$data = $this->calDatePayment($data['result'][$c]['rentDate']);
-				
-			}
-			
-	//echo $data['result'];
-	//var_dump($data['result']);
-	//var_dump($this->calDatePayment($data['planActive'][1]['rentDate']));
-	
-	//$data['result']=$this->calDatePayment($date);
-	//var_dump($data['result'][1]['planId']);
-	//die();
-	
-	$data['loginData'] = $this->session->userdata('loginData'); /// แรกข้อมูลที่เก็บใน session ชื่อ loginData
- 	$this->load->view('empMain',$data); //// ส่งข้อมูล loginData ที่อยู่ใน session พร้อมกับ loadview ชื่อ home_user
-
+		$data['loginData'] = $this->session->userdata('loginData'); /// แรกข้อมูลที่เก็บใน session ชื่อ loginData
+		$this->load->view('empMain',$data); //// ส่งข้อมูล loginData ที่อยู่ใน session พร้อมกับ loadview ชื่อ home_user	
+		
  }
  
  function checkStatus(){ 
@@ -91,6 +49,53 @@ function index(){  	  //// ฟังชั่นในการเรียก�
 	return $data;
 	
 	}
+	
+	function contantMain(){
+		$data['planActive'] = $this->Detail->getTestAll();
+			$data['all'] = $this->Detail->getNotActiveAll();
+			//$date='2014-7-8';
+			for($out=0;$out<count($data['planActive']);$out++){
+				for($i=0;$i<count($data['all']);$i++){
+					
+					if($data['planActive'][$out]['planId']==$data['all'][$i]['planId']){			
+						$num=$i;
+						//sort($data['all']);
+						
+						
+						unset($data['all'][$num]);
+					}else{
+						$data['all'][$out]['detailStatus']=NULL;
+						$data['all'][$out]['month']='normal';
+						
+					}	
+					$data['planActive'][$out]['month']=$this->calDatePayment($data['planActive'][$out]['rentDate']);
+					//$data['planActive'][$out]['calDate']=$this->calDate($data['planActive'][$out]['rentDate']);
+					sort($data['all']);	
+				}
+				
+				sort($data['all']);
+			}
+
+				$data['result'] = $data['planActive'];
+				sort($data['result']);
+			for($c=1;$c<count($data['all']);$c++){
+				array_push($data['result'],$data['all'][$c]);
+				//$data = $this->calDatePayment($data['result'][$c]['rentDate']);
+				
+			}
+			
+	//echo $data['result'];
+	//var_dump($data['result']);
+	//var_dump($this->calDatePayment($data['planActive'][1]['rentDate']));
+	
+	//$data['result']=$this->calDatePayment($date);
+
+	
+	$data['loginData'] = $this->session->userdata('loginData'); /// แรกข้อมูลที่เก็บใน session ชื่อ loginData
+ 	$this->load->view('contantMain',$data); //// ส่งข้อมูล loginData ที่อยู่ใน session พร้อมกับ loadview ชื่อ home_user
+	}
+	
+	
 }
 
 ?>

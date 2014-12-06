@@ -178,7 +178,7 @@ function login()
    $this -> db -> select('*');  						###########
    $this -> db -> from('tblEmployee'); 						 ########### เช็คข้อมูลใน DB 
    $this -> db -> where('empUserName',$this->getEmpUserName()); ###########
-   $this -> db -> where('empPassword', md5($this->getEmpPassword())); ###########
+   $this -> db -> where('empPassword', MD5($this->getEmpPassword())); ###########
    $this -> db -> limit(1); ############## ตำกัดให้คืนค่าแค่ record เดียว
 
    $query = $this -> db -> get()->result_array(); ##############  สั่งดึงข้อมูลตามเงื่อนไข
@@ -199,8 +199,8 @@ function login()
 function addEmployee()
 	{
 		$data = array(
-					   'empUserName' => $this->getEmpUserName(),
-					   'empPassword' => $this->getEmpPassword(),
+					   'empUsername' => $this->getEmpUserName(),
+					   'empPassword' => MD5($this->getEmpPassword()),
 					   'empName' => $this->getEmpName(),
 					   'empLastname' => $this->getEmpLastname(),
 					   'empIdCard' => $this->getEmpIdCard(),
