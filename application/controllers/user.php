@@ -96,6 +96,21 @@ function index(){  	  //// ฟังชั่นในการเรียก�
 	}
 	
 	
+<<<<<<< HEAD
+=======
+	}
+	function showAllData(){
+		$data['showAll'] = $this->Customer->showAllData();
+		$this->load->view('empDoShow',$data);
+	}
+	function searchData(){
+		$keyword = $this->input->post('keyword');
+        $data['showAll'] = $this->Customer->searchData($keyword);
+        $this->load->view('empDoShow',$data);
+	}
+	
+	
+>>>>>>> 1a7c751c43a9f1f6c4dfa848937d211c39a7b0e0
 }
 
 ?>
