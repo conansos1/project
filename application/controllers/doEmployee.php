@@ -40,7 +40,17 @@ class doEmployee extends CI_Controller {
 		$this->Employee->setEmpBirthDay($this->input->post('empBirthDay'));
 		$this->Employee->setEmpTel($this->input->post('empTel'));
 		$this->Employee->setEmpStatus($this->input->post('empStatus'));
-		$this->Employee->addEmployee();
+		$result = $this->Employee->addEmployee();
+		if($result){
+		echo "<script>
+		alert('ทำรายการชำระสำเร็จ');
+		parent.jQuery.fancybox.close();</script>";
+		}
+		else{
+		echo "<script>
+		alert('เกิดข้อผิดพลาด');
+		parent.jQuery.fancybox.close();</script>";
+		}
 		echo "<script>parent.jQuery.fancybox.close();</script>";
 	}
 	 function checkUser(){
@@ -71,12 +81,32 @@ class doEmployee extends CI_Controller {
 		$this->Employee->setEmpStatus($this->input->post('empStatus'));
 		$this->Employee->setEmpTel($this->input->post('empTel'));
 							
-		$this->Employee->upDateEmployee();
+		$result =$this->Employee->upDateEmployee();
+		if($result){
+		echo "<script>
+		alert('ทำรายการชำระสำเร็จ');
+		parent.jQuery.fancybox.close();</script>";
+		}
+		else{
+		echo "<script>
+		alert('เกิดข้อผิดพลาด');
+		parent.jQuery.fancybox.close();</script>";
+		}
 		echo "<script>parent.jQuery.fancybox.close();</script>";
 	}
 	function doDelete($empId)
 	{    
-		$this->Employee->delete($empId);
+		$result = $this->Employee->delete($empId);
+		if($result){
+		echo "<script>
+		alert('ทำรายการชำระสำเร็จ');
+		parent.jQuery.fancybox.close();</script>";
+		}
+		else{
+		echo "<script>
+		alert('เกิดข้อผิดพลาด');
+		parent.jQuery.fancybox.close();</script>";
+		}
 		echo "<script>parent.jQuery.fancybox.close();</script>";
 	}
 	function searchData(){
