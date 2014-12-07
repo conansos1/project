@@ -92,7 +92,7 @@ function index(){  	  //// ฟังชั่นในการเรียก�
 
 	
 	$data['loginData'] = $this->session->userdata('loginData'); /// แรกข้อมูลที่เก็บใน session ชื่อ loginData
- 	$this->load->view('empContantMain',$data); //// ส่งข้อมูล loginData ที่อยู่ใน session พร้อมกับ loadview ชื่อ home_user
+ 	$this->load->view('contantMain',$data); //// ส่งข้อมูล loginData ที่อยู่ใน session พร้อมกับ loadview ชื่อ home_user
 	}
 	
 	

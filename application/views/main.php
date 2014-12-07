@@ -149,7 +149,12 @@ $('.popupEdit').fancybox({
 		$('.alert').toggleClass('red','addOrRemove')
 		},500);
 </script>
-
+<script>
+		function alerts(){
+			alert('แผงว่าง');
+			$('.load').load( "<?php echo base_url()?>index.php/doDetail/viewAdd" );
+		}
+</script>
 <style>
 	.base{/*แผงว่าง*/
 		height:30px;
@@ -210,9 +215,9 @@ $('.popupEdit').fancybox({
   <h1></h1>
   <!--ul.nav-list>li*5>a-->
   <ul class="nav-list">
-    <li class="download selected"><a class="submenu" onclick="return false;" href="<?php echo base_url();?>index.php/admin/contantMain">Home</a></li>
-    <li class="features"><a class="submenu" onclick="return false;" href="<?php echo base_url();?>index.php/doEmployee/showAllData">Employee</a></li>
-    <li class="method"><a class="submenu" onclick="return false;" href="<?php echo base_url();?>index.php/doReport">Report</a></li>
+    <li class="download selected"><a class="submenu" href="<?php echo base_url();?>index.php/admin/contantMain">Home</a></li>
+    <li class="features"><a class="submenu" href="<?php echo base_url();?>index.php/doEmployee/showAllData">Employee</a></li>
+    <li class="method"><a class="submenu" href="<?php echo base_url();?>index.php/doReport">Report</a></li>
   </ul> 
 </div>
 </center></div>

@@ -22,7 +22,7 @@
   </tr>
   <tr>
     <td height="">ทีอยู่</td>
-    <td><textarea class="checkInput" name="empAddress" id="empAddress" cols="45" rows="5" > <?php echo $row['empAddress']?></textarea></td>
+    <td><textarea class="checkInput" name="empAddress" id="empAddress" cols="45" rows="5" value="<?php echo $row['empAddress']?>"> </textarea></td>
   </tr>
   <tr>
     <td height="">วันเกิด</td>
