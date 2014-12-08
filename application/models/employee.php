@@ -14,7 +14,8 @@ class Employee extends CI_Model {
     var $empIdCard ; ######  รหัสบัตรประชาชน  ######
     var $empAddress ; ######  ที่อยู่พนักงาน  ######
     var $empBirthDay ; ######  วันเกิดพนักงาน  ######
-    var $empStatus ; ######  ตำแหน่ง  ######
+	var $empStatus ; ######  ตำแหน่ง  ######
+    var $empDateStart ; ######  วันที่เริ่มงาน  ######
     var $empDataStatus ; ######  สถานะข้อมูล  ######
 ###### End Attribute  ###### 
 
@@ -169,7 +170,18 @@ class Employee extends CI_Model {
         return $this->empTel; 
      }
 ###### End GET : $empDataStatus ###### 
+ ###### SET : $empStatus ######
+    function setEmpDateStart($empDateStart){
+        $this->empDateStart = $empDateStart; 
+     }
+###### End SET : $empStatus ###### 
 
+
+###### GET : $empStatus ######
+    function getEmpDateStart(){
+        return $this->empDateStart; 
+     }
+###### End GET : $empStatus ###### 
 
 
 ######################## function login #############################
@@ -206,6 +218,7 @@ function addEmployee()
 					   'empIdCard' => $this->getEmpIdCard(),
 					   'empAddress' => $this->getEmpAddress(),
 					   'empBirthDay' => $this->getEmpBirthDay(),
+					   'empDateStart' => $this->getEmpDateStart(),
 					   'empTel' => $this->getEmpTel(),
 					   'empStatus' => $this->getEmpStatus()
 					);

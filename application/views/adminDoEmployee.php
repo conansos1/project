@@ -148,12 +148,12 @@ function checkValue(){
   </tr>
   <tr>
     <td height="35" align="left">Password</td>
-    <td><input name="empPassword" type="text"  required id="empPassword" maxlength="16" min="4"></td>
+    <td><input name="empPassword" type="password"  required id="empPassword" maxlength="16" min="4"></td>
   </tr>
   <tr>
     <td height="35" align="left">re-Password</td>
     <td>
-    <input name="memberPasswordC" type="text"  required id="memberPasswordC" maxlength="16">
+    <input name="memberPasswordC" type="password"  required id="memberPasswordC" maxlength="16">
 <a id="memberPasswordResult"></a><input type="hidden" name="memberPasswordCheck" id="memberPasswordCheck"  required></td>
   </tr>
   <tr>
