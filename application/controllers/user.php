@@ -39,12 +39,13 @@ function index(){  	  //// ฟังชั่นในการเรียก�
 	if($u_m<0){
 		$data = 'normal'; 
 		}
-	else if($u_m<=1){
+	else if($u_m<1){
 		$data = 'green'; 
 		}
-	else if($u_m>1){
+	else if($u_m>0){
 		$data = 'alert'; 
 		}
+	
  	//$data="$u_y ปี $u_m เดือน $u_d วัน";
 	return $data;
 	
@@ -53,31 +54,36 @@ function index(){  	  //// ฟังชั่นในการเรียก�
 	function contantMain(){
 		$data['planActive'] = $this->Detail->getTestAll();
 			$data['all'] = $this->Detail->getNotActiveAll();
+			
 			//$date='2014-7-8';
+		for($e=0;$e<count($data['all']);$e++){ 
+		$data['all'][$e]['id'] = $e;		
+		}
 			for($out=0;$out<count($data['planActive']);$out++){
 				for($i=0;$i<count($data['all']);$i++){
 					
 					if($data['planActive'][$out]['planId']==$data['all'][$i]['planId']){			
+						
 						$num=$i;
 						//sort($data['all']);
-						
-						
 						unset($data['all'][$num]);
 					}else{
 						$data['all'][$out]['detailStatus']=NULL;
 						$data['all'][$out]['month']='normal';
 						
-					}	
+					}
+					
+					
+					
 					$data['planActive'][$out]['month']=$this->calDatePayment($data['planActive'][$out]['rentDate']);
 					//$data['planActive'][$out]['calDate']=$this->calDate($data['planActive'][$out]['rentDate']);
 					sort($data['all']);	
 				}
-				
-				sort($data['all']);
+				//sort($data['all']);
 			}
-
+				//echo $out;
 				$data['result'] = $data['planActive'];
-				sort($data['result']);
+				//sort($data['result']);
 			for($c=1;$c<count($data['all']);$c++){
 				array_push($data['result'],$data['all'][$c]);
 				//$data = $this->calDatePayment($data['result'][$c]['rentDate']);

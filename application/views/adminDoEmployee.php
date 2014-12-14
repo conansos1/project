@@ -91,14 +91,58 @@ for(i=0, sum=0; i < 12; i++)
 sum += parseFloat(id.charAt(i))*(13-i); if((11-sum%11)%10!=parseFloat(id.charAt(12))) 
 return false; return true;}
 		function chkSubmit()
-	{
+	{		var c = false;
+			var d = false;
+			var e = false;
+	
 			a = document.getElementById("empTel");
+		if(checkID(document.form1.empIdCard.value)){
 			if(a.value*1!=a.value){
 				alert('เบอร์โทศัพท์ กรุณากรอกเป็นตัวเลขเท่านั้น');
-				return false;
+				c = false;
 			}else{
-				return true;
+				c = true;
+							
+					 if($('#memberUsernameC').val()==0&&c==true){
+						 	d = c;
+			
+						 	if(document.getElementById('empUsername').value.length > 3 && d==true){
+								
+													if(document.getElementById('empPassword').value.length > 7 && document.getElementById('empPassword').value.length < 17){
+														
+														e = true;
+													
+													}else{
+														alert('Password ต้องมากกว่า 8 - 16 ตัวอักษร');
+														e = false;
+													}
+													
+								
+								
+							}else{
+								
+								d = false;
+								alert('Username ต้องมากกว่า 4 ตัวอักษร');
+								
+							}
+							
+							
+						 }else{
+								 alert('Username มีผู้ใช้งานแล้ว');
+								 d = false;
+				
+						 }
 			}
+		}else{
+			alert('รหัสประชาชนถูกต้อง');
+			c = false;
+			
+			
+		}
+		
+		
+		
+		return e;
 
 	}
 function checkValue(){
@@ -109,6 +153,7 @@ function checkValue(){
 	}else{
 				return true;
 		}
+
 	
 }
  </script>
@@ -131,7 +176,7 @@ function checkValue(){
   </tr>
   <tr>
     <td height="40">ทีอยู่</td>
-    <td><textarea class="checkInput" name="empAddress" id="empAddress" cols="45" rows="5" required="required"></textarea></td>
+    <td><textarea class="checkInput" name="empAddress" id="empAddress" cols="45" rows="5" required></textarea></td>
   </tr>
   <tr>
     <td height="31">วันเกิด</td>
@@ -148,12 +193,12 @@ function checkValue(){
   </tr>
   <tr>
     <td height="35" align="left">Password</td>
-    <td><input name="empPassword" type="password"  required id="empPassword" maxlength="16" min="4"></td>
+    <td><input name="empPassword" type="password"  required id="empPassword" min="4"></td>
   </tr>
   <tr>
     <td height="35" align="left">re-Password</td>
     <td>
-    <input name="memberPasswordC" type="password"  required id="memberPasswordC" maxlength="16">
+    <input name="memberPasswordC" type="password"  required id="memberPasswordC">
 <a id="memberPasswordResult"></a><input type="hidden" name="memberPasswordCheck" id="memberPasswordCheck"  required></td>
   </tr>
   <tr>

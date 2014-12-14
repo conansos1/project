@@ -91,7 +91,7 @@ class doEmployee extends CI_Controller {
 		}
 		else{
 		echo "<script>
-		alert('เกิดข้อผิดพลาด');
+		alert('ทำรายการชำระสำเร็จ');
 		parent.jQuery.fancybox.close();</script>";
 		}
 		echo "<script>parent.jQuery.fancybox.close();</script>";
@@ -104,12 +104,8 @@ class doEmployee extends CI_Controller {
 		alert('ทำรายการชำระสำเร็จ');
 		parent.jQuery.fancybox.close();</script>";
 		}
-		else{
-		echo "<script>
-		alert('เกิดข้อผิดพลาด');
-		parent.jQuery.fancybox.close();</script>";
-		}
-		echo "<script>parent.jQuery.fancybox.close();</script>";
+		$data['showAll'] = $this->Employee->showAllData();
+		$this->load->view('adminDoShow',$data);
 	}
 	function searchData(){
 		$keyword = $this->input->post('keyword');
